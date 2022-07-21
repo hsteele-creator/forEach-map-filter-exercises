@@ -113,9 +113,25 @@ Examples:
     vowelCount('hmmm') // {};
     vowelCount('I Am awesome and so are you') // {i: 1, a: 4, e: 3, o: 3, u: 1};
 */
-function vowelCount(str){
-   
-}
+function vowelCount(str) {
+    let splitArr = str.split("");
+    let obj = {};
+    const vowels = "aeiou";
+  
+    splitArr.forEach(function(letter) {
+      let lowerCasedLetter = letter.toLowerCase()
+      if (vowels.indexOf(lowerCasedLetter) !== -1) {
+        if (obj[lowerCasedLetter]) {
+          obj[lowerCasedLetter]++;
+        } else {
+          obj[lowerCasedLetter] = 1;
+        }
+      }
+    });
+    return obj;
+  }
+
+  console.log(vowelCount('Elie'));
 
 /*
 Write a function called doubleValuesWithMap which accepts an array and returns a new array with all the values in the array passed to the function doubled
