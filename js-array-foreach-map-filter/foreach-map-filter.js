@@ -54,13 +54,23 @@ const evenArr = [1, 2, 3, 4, 5, 6];
 Write a function called showFirstAndLast which accepts an array of strings and returns a new array with only the first and last character of each string.
 
 Examples:
-    showFirstAndLast(['colt','matt', 'tim', 'test']) // ["ct", "mt", "tm", "tt"]
+    
     showFirstAndLast(['hi', 'goodbye', 'smile']) // ['hi', 'ge', 'se']
 
 */
 function showFirstAndLast(arr){
 
+    return arr.map(function(str) {
+        const firstLetter =  str[0];
+        const lastLetter = str[str.length - 1]
+
+        return firstLetter.concat('', lastLetter);
+    })     
 }
+
+// console.log(showFirstAndLast(['hi', 'goodbye', 'smile'])); 
+
+// console.log(showFirstAndLast(['colt','matt', 'tim', 'test'])); // ["ct", "mt", "tm", "tt"]
 
 
 // console.log(showFirstAndLast(words));
@@ -175,12 +185,26 @@ function extractKey(arr, key){
 Write a function called extractFullName which accepts an array of objects and returns a new array with the value of the key with a name of "first" and the value of a key with the name of  "last" in each object, concatenated together with a space. 
 
 Examples:
-    extractFullName([{first: 'Elie', last:"Schoppik"}, {first: 'Tim', last:"Garcia"}, {first: 'Matt', last:"Lane"}, {first: 'Colt', last:"Steele"}]) // ['Elie Schoppik', 'Tim Garcia', 'Matt Lane', 'Colt Steele']
+
 */
 
+
+
 function extractFullName(arr){
-    
+
+    return arr.map(function(obj) {
+        const first = obj.first;
+        const last = obj.last;
+
+        return first.concat(' ', last);
+    })
 }
+
+
+// console.log(extractFullName([{first: 'Elie', last:"Schoppik"}, {first: 'Tim', last:"Garcia"}, {first: 'Matt', last:"Lane"}, {first: 'Colt', last:"Steele"}])) // ['Elie Schoppik', 'Tim Garcia', 'Matt Lane', 'Colt Steele']
+
+
+
 
 /*
 Write a function called filterByValue which accepts an array of objects and a key and returns a new array with all the objects that contain that key.
@@ -189,7 +213,20 @@ Examples:
     filterByValue([{first: 'Elie', last:"Schoppik"}, {first: 'Tim', last:"Garcia", isCatOwner: true}, {first: 'Matt', last:"Lane"}, {first: 'Colt', last:"Steele", isCatOwner: true}], 'isCatOwner') // [{first: 'Tim', last:"Garcia", isCatOwner: true}, {first: 'Colt', last:"Steele", isCatOwner: true}]
 */
 
-function filterByValue(arr, key) {}
+function filterByValue(arr, key) {
+
+    return arr.filter(function(obj) {
+        return obj[`${key}`];
+    })
+
+}
+
+// console.log(filterByValue([{first: 'Elie', last:"Schoppik"}, {first: 'Tim', last:"Garcia", isCatOwner: true}, {first: 'Matt', last:"Lane"}, {first: 'Colt', last:"Steele", isCatOwner: true}], 'isCatOwner'));
+
+
+
+
+
 
 /*
 Write a function called find which accepts an array and a value and returns the first element in the array that has the same value as the second parameter or undefined if the value is not found in the array.
@@ -223,7 +260,16 @@ Examples:
     findInObj([{first: 'Elie', last:"Schoppik"}, {first: 'Tim', last:"Garcia", isCatOwner: true}, {first: 'Matt', last:"Lane"}, {first: 'Colt', last:"Steele", isCatOwner: true}], 'isCatOwner',true) // {first: 'Tim', last:"Garcia", isCatOwner: true}
 */
 
-function findInObj(arr, key, searchValue) {}
+function findInObj(arr, key, searchValue) {
+    const filteredArray = arr.filter(function(obj) {
+        return obj[`${key}`] === searchValue;
+    })
+
+    return filteredArray[0];
+}
+
+// console.log(findInObj([{first: 'Elie', last:"Schoppik"}, {first: 'Tim', last:"Garcia", isCatOwner: true}, {first: 'Matt', last:"Lane"}, {first: 'Colt', last:"Steele", isCatOwner: true}], 'isCatOwner',true));
+
 
 /*
 Write a function called removeVowels which accepts a string and returns a new string with all of the vowels (both uppercased and lowercased) removed. Every character in the new string should be lowercased.
